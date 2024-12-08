@@ -36,13 +36,10 @@ class Authservices extends ChangeNotifier {
   }
 
 
-  // Getter para o nome do usuário logado
   String get nomeUsuario => _nomeUsuario ?? '';
 
-  // Getter para o usuário atual
   User? get user => auth.currentUser;
 
-  // Método para logout
   void logout() {
     auth.signOut();
     _nomeUsuario = null;
@@ -59,7 +56,7 @@ class Authservices extends ChangeNotifier {
       //Navigator.pushReplacementNamed(context, 'cardapio');
       Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => Telabase()), // Pode ser sua tela base, ou a próxima tela que você deseja
+      MaterialPageRoute(builder: (context) => Telabase()), 
     );
 
     }).catchError((e){

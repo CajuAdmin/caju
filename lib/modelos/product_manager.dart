@@ -1,3 +1,4 @@
+import 'package:caju/modelos/item_tamanho.dart';
 import 'package:caju/modelos/produto.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';

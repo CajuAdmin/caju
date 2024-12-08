@@ -1,5 +1,6 @@
 import 'package:caju/authservices.dart';
 import 'package:caju/modelos/login_controller';
+import 'package:caju/modelos/product_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -28,9 +29,17 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => Authservices(),
-      lazy: false,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => Authservices(),
+          lazy: false,
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ProductManager(),
+          lazy: false,
+        ),
+      ],
       child: MaterialApp(
         title: 'Caju Cafeteria',
         debugShowCheckedModeBanner: false,
@@ -44,7 +53,7 @@ class MainApp extends StatelessWidget {
           ),
         ),
         home: Telabase(),
-    ),
-  );   
+          ),
+    );   
   }
 }

@@ -1,6 +1,7 @@
 import 'package:caju/componentes/drawer_custom.dart';
 import 'package:caju/modelos/page_manager.dart';
 import 'package:caju/telas/login/login.dart';
+import 'package:caju/telas/produtos/tela_produtos.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -23,12 +24,7 @@ final PageController pageController = PageController();
               title: const Text('Home', style: TextStyle(color: Colors.white),),
             ),
           ),
-          Scaffold(
-            drawer: DrawerCustom(),
-            appBar: AppBar(
-              title: const Text('Home2',style: TextStyle(color: Colors.white),),
-            ),
-          ),
+          TelaProdutos(),
           Scaffold(
             drawer: DrawerCustom(),
             appBar: AppBar(

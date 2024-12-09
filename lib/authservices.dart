@@ -5,6 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:caju/modelos/user.dart';
+import 'package:provider/provider.dart';
 
 class Authservices extends ChangeNotifier {
   final FirebaseAuth auth = FirebaseAuth.instance;
@@ -13,8 +15,19 @@ class Authservices extends ChangeNotifier {
   String? _nomeUsuario;
   bool get isLoggedIn => auth.currentUser != null;
 
+  Usuario? usuarioAtual;
+
   Authservices() {
     _initializeUser();
+    notifyListeners();
+  }
+
+  Usuario? _usuario;
+
+  Usuario? get usuario => _usuario;
+
+  void setUsuario(Usuario usuario){
+    _usuario = usuario;
     notifyListeners();
   }
 
@@ -43,24 +56,49 @@ class Authservices extends ChangeNotifier {
   void logout() {
     auth.signOut();
     _nomeUsuario = null;
+    usuarioAtual = null;
     notifyListeners();
   }
 
-  void login(context, email, senha){
-    auth.signInWithEmailAndPassword(
-      email: email, password: senha
-    ).then((value){
-      _initializeUser();
+  void login(BuildContext context, String email, String senha) {
+    auth.signInWithEmailAndPassword(email: email, password: senha).then(
+      (value) async {
+
+        _initializeUser();
+
+        String uid = auth.currentUser!.uid;
+
+        String nome = '';
+
+        QuerySnapshot querySnapshot = await firestore
+        .collection('usuarios')
+        .where('uid', isEqualTo: uid)
+        .get();
+
+        if (querySnapshot.docs.isNotEmpty) {
+           DocumentSnapshot userDoc = querySnapshot.docs.first; 
+           nome = userDoc.get('nome'); 
+        } 
+
+
+      Usuario usuario = Usuario(
+        uid: uid,
+        email: email,
+        senha: senha,
+        nome: nome,
+      );
+      
+      Provider.of<Authservices>(context, listen: false).setUsuario(usuario);
+
       notifyListeners();
       sucesso(context, 'Usuário autenticado com sucesso.');
-      //Navigator.pushReplacementNamed(context, 'cardapio');
-      Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => Telabase()), 
-    );
 
-    }).catchError((e){
-      switch (e.code){
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => Telabase()),
+      );
+    }).catchError((e) {
+      switch (e.code) {
         case 'invalid-email':
           erro(context, 'O formato do e-mail é inválido.');
           break;
@@ -68,7 +106,7 @@ class Authservices extends ChangeNotifier {
           erro(context, 'ERRO: ${e.code.toString()}');
       }
     });
-  }
+}
 
    void sucesso(context, String msg){
   ScaffoldMessenger.of(context).showSnackBar(
@@ -95,6 +133,62 @@ class Authservices extends ChangeNotifier {
     ),
   );
 }
+
+void criarConta(context, nome, email, senha){
+    auth.createUserWithEmailAndPassword(
+      email: email,
+      password: senha,
+    ).then((value){
+      FirebaseFirestore.instance.collection('usuarios')
+      .add(
+        {
+          'uid': value.user!.uid,
+          'nome': nome
+        }
+      );
+      sucesso(context, 'Usuário criado com sucesso.');
+      Navigator.pop(context);
+    }).catchError((e){
+      switch (e.code){
+        case 'email-already-in-use':
+          erro(context, 'O email já foi cadastrado.');
+          break;
+        case 'invalid-email':
+          erro(context, 'O formato do email é inválido.');
+          break;
+        default:
+          erro(context, 'ERRO: ${e.code.toString()}');
+      }
+    });
+  }
+
+  void esqueceuSenha(context, String email){
+    if(email.isNotEmpty){
+      auth.sendPasswordResetEmail(email: email);
+      sucesso(context, 'Email enviado com sucesso.');
+    } else {
+      erro(context, 'Informe o email para recuperar a conta.');
+    }
+    Navigator.pop(context);
+  }
+
+  
+  idUsuario(){
+    return auth.currentUser!.uid;
+  }
+
+  Future<String>usuarioLogado() async {
+    var nome = "";
+    await FirebaseFirestore.instance  
+      .collection('usuarios')
+      .where('uid', isEqualTo: idUsuario())
+      .get()
+      .then((value){
+        nome = value.docs[0].data()['nome'] ?? '';
+      });
+    return nome;
+  } 
+
 }
 
 

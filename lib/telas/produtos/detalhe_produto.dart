@@ -1,7 +1,9 @@
 // ignore_for_file: sized_box_for_whitespace
 
 import 'package:caju/authservices.dart';
+import 'package:caju/modelos/carrinho_manager.dart';
 import 'package:caju/modelos/produto.dart';
+import 'package:caju/telas/carrinho/tela_carrinho.dart';
 import 'package:caju/telas/login/login.dart';
 import 'package:caju/telas/produtos/componentes/tamanho_widget.dart';
 import 'package:flutter/foundation.dart';
@@ -101,7 +103,13 @@ class DetalheProduto extends StatelessWidget {
                       return ElevatedButton(
                         onPressed: produto.tamanhoSelecionado != null ? () {
                           if (authServices.isLoggedIn){
-                            //adicionar ao carirnho
+                            
+                            context.read<CarrinhoManager>().addCarrinho(produto);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => TelaCarrinho()),
+                            );
+
                           } else {
                              Navigator.push(
                               context,

@@ -1,7 +1,10 @@
 import 'package:caju/authservices.dart';
+import 'package:caju/modelos/user.dart';
 import 'package:caju/telas/login/login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:caju/modelos/user.dart';
 
 class DrawerCustomHeader extends StatelessWidget {
   @override
@@ -23,7 +26,9 @@ class DrawerCustomHeader extends StatelessWidget {
                 ),
               ),
               Text(
-                'Olá, bem vindx! ${authServices.nomeUsuario}',
+                authServices.isLoggedIn
+                  ? 'Olá, ${authServices.usuario!.nome}!'
+                  : 'Olá, bem vindx!',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,

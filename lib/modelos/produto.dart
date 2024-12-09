@@ -31,4 +31,8 @@ set tamanhoSelecionado(ItemTamanho? value){
   notifyListeners();
 }
 
+ItemTamanho? findTamanho(String nome){
+  return tamanhos.firstWhere((t) => t.nome == nome);
+}
+
 }

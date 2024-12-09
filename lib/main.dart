@@ -1,6 +1,8 @@
 import 'package:caju/authservices.dart';
+import 'package:caju/modelos/carrinho_manager.dart';
 import 'package:caju/modelos/login_controller';
 import 'package:caju/modelos/product_manager.dart';
+import 'package:caju/modelos/user.dart';
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -39,6 +41,12 @@ class MainApp extends StatelessWidget {
           create: (_) => ProductManager(),
           lazy: false,
         ),
+        //ProxyProvider<Authservices, CarrinhoManager>(
+          //create: (_) => CarrinhoManager(),
+          //lazy: false,
+          //update: (_, authServices, carrinhoManager) =>
+           // carrinhoManager..updateUsuario(authServices),
+        //),
       ],
       child: MaterialApp(
         title: 'Caju Cafeteria',

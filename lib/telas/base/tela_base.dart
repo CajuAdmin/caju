@@ -1,5 +1,6 @@
 import 'package:caju/componentes/drawer_custom.dart';
 import 'package:caju/modelos/page_manager.dart';
+import 'package:caju/telas/home/tela_home.dart';
 import 'package:caju/telas/login/login.dart';
 import 'package:caju/telas/produtos/tela_produtos.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ final PageController pageController = PageController();
       child: PageView(
         controller: pageController,
         children: <Widget>[
-          //Login(),
+          TelaHome(),
           Scaffold(
             drawer: DrawerCustom(),
             appBar: AppBar(

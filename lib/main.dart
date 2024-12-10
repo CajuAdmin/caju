@@ -1,5 +1,6 @@
 import 'package:caju/authservices.dart';
 import 'package:caju/modelos/carrinho_manager.dart';
+import 'package:caju/modelos/home_manager.dart';
 import 'package:caju/modelos/login_controller';
 import 'package:caju/modelos/product_manager.dart';
 import 'package:caju/modelos/user.dart';
@@ -39,6 +40,10 @@ class MainApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => ProductManager(),
+          lazy: false,
+        ),
+        ChangeNotifierProvider(
+          create: (_) => HomeManager(),
           lazy: false,
         ),
         ChangeNotifierProxyProvider<Authservices, CarrinhoManager>(

@@ -1,7 +1,8 @@
 import 'package:caju/modelos/secao.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 
-class HomeManager {
+class HomeManager extends ChangeNotifier{
 
   HomeManager(){
     _loadSecoes();
@@ -13,9 +14,13 @@ class HomeManager {
 
   Future<void> _loadSecoes() async {
     firestore.collection('home').snapshots().listen((snapshot){
+      secoes.clear();
       for(final DocumentSnapshot document in snapshot.docs){
         secoes.add(Secao.fromDocument(document));
       }
+
+      notifyListeners();
+      
     });
   }
 

@@ -41,12 +41,12 @@ class MainApp extends StatelessWidget {
           create: (_) => ProductManager(),
           lazy: false,
         ),
-        //ProxyProvider<Authservices, CarrinhoManager>(
-          //create: (_) => CarrinhoManager(),
-          //lazy: false,
-          //update: (_, authServices, carrinhoManager) =>
-           // carrinhoManager..updateUsuario(authServices),
-        //),
+        ChangeNotifierProxyProvider<Authservices, CarrinhoManager>(
+          create: (_) => CarrinhoManager(),
+          lazy: false,
+          update: (_, authServices, carrinhoManager) =>
+           carrinhoManager!..updateUsuario(authServices),
+        ),
       ],
       child: MaterialApp(
         title: 'Caju Cafeteria',

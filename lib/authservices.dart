@@ -188,7 +188,6 @@ void criarConta(context, nome, email, senha){
       });
     return nome;
   } 
-
 }
 
 

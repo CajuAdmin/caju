@@ -1,5 +1,6 @@
 import 'package:caju/componentes/drawer_custom.dart';
 import 'package:caju/modelos/product_manager.dart';
+import 'package:caju/telas/carrinho/tela_carrinho.dart';
 import 'package:caju/telas/produtos/componentes/produto_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -25,6 +26,17 @@ class TelaProdutos extends StatelessWidget {
           }
           );
         }
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.white,
+        foregroundColor: Theme.of(context).primaryColor,
+        onPressed: (){
+          Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => TelaCarrinho()),
+          );
+        },
+        child: Icon(Icons.shopping_cart),
       ),
     );
   }

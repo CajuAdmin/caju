@@ -32,7 +32,12 @@ set tamanhoSelecionado(ItemTamanho? value){
 }
 
 ItemTamanho? findTamanho(String nome){
-  return tamanhos.firstWhere((t) => t.nome == nome);
+  try {
+    return tamanhos.firstWhere(
+    (t) => t.nome == nome);
+  } catch (e){
+    return null;
+  }
 }
 
 }

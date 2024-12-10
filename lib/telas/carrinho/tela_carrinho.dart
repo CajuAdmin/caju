@@ -1,3 +1,4 @@
+import 'package:caju/componentes/card_preco.dart';
 import 'package:caju/modelos/carrinho_manager.dart';
 import 'package:caju/telas/carrinho/carrinho_tile.dart';
 import 'package:flutter/foundation.dart';
@@ -21,10 +22,18 @@ class TelaCarrinho extends StatelessWidget {
       ),
       body: Consumer<CarrinhoManager>(
         builder: (_, carrinhoManager, __){
-          return Column(
-            children: carrinhoManager.items.map(
-              (produtoCarrinho) => CarrinhoTile(produtoCarrinho: produtoCarrinho)
-              ).toList(),
+          return ListView(
+            children: [
+              Column(
+                children: carrinhoManager.items.map(
+                (produtoCarrinho) => CarrinhoTile(produtoCarrinho: produtoCarrinho)
+                ).toList(),
+              ),
+              CardPreco(
+                textoBotao: 'Finalizar compra',
+                onPressed: (){},
+              ),
+            ],
           );
         }
       ),

@@ -50,6 +50,9 @@ class MainApp extends StatelessWidget {
           update: (_, authServices, carrinhoManager) =>
            carrinhoManager!..updateUsuario(authServices),
         ),
+        Provider<PageManager>(
+          create: (_) => PageManager(PageController()),
+        )
       ],
       child: MaterialApp(
         title: 'Caju Cafeteria',

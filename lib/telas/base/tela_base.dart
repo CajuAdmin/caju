@@ -3,6 +3,7 @@ import 'package:caju/modelos/page_manager.dart';
 import 'package:caju/telas/carrinho/tela_carrinho.dart';
 import 'package:caju/telas/home/tela_home.dart';
 import 'package:caju/telas/login/login.dart';
+import 'package:caju/telas/produtos/tela_categorias.dart';
 import 'package:caju/telas/produtos/tela_produtos.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +21,7 @@ final PageController pageController = PageController();
         controller: pageController,
         children: <Widget>[
           TelaHome(),
-          TelaProdutos(),
+          TelaCategorias(),
           TelaCarrinho(),
         ],
       ),

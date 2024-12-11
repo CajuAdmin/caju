@@ -31,10 +31,7 @@ class DetalheProduto extends StatelessWidget {
           centerTitle: true,
           leading: IconButton(
           onPressed: (){
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => TelaProdutos()),
-      );
+            Navigator.pop(context);
           }, 
           icon: Icon(Icons.arrow_back),
         ),

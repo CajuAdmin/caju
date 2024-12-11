@@ -12,6 +12,7 @@ class TelaCarrinho extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: DrawerCustom(),
       appBar: AppBar(
         title: Text(
           'Carrinho',
@@ -20,12 +21,6 @@ class TelaCarrinho extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        leading: IconButton(
-          onPressed: (){
-            Navigator.pop(context);
-          }, 
-          icon: Icon(Icons.arrow_back),
-        ),
       ),
       body: Consumer<CarrinhoManager>(
         builder: (_, carrinhoManager, __){

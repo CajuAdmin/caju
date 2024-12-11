@@ -29,7 +29,6 @@ class DrawerCustom extends StatelessWidget {
               Drawertile(iconData: Icons.home, title: 'Início', pagina: 0,),
               Drawertile(iconData: Icons.list, title: 'Categorias', pagina: 1),
               Drawertile(iconData: Icons.shopping_basket_rounded, title: 'Carrinho', pagina: 2,),
-              Drawertile(iconData: Icons.playlist_add_check, title: 'Meus Pedidos', pagina: 3,),
             ],
           ),
         ],

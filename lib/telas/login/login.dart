@@ -99,7 +99,7 @@ class LoginState extends State<Login> {
               SizedBox(
                 width: 280,
                 height: 280,
-                //child: Image.asset('assets/images/logo_borda.png'),
+                child: Image.asset('assets/logo_borda_branca.png')
               ),
               SizedBox(height: 10),
               TextFormField(

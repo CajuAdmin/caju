@@ -73,6 +73,7 @@ class CardPreco extends StatelessWidget {
                     ),
                   ),
               ),
+              SizedBox(height: 25,),
           ],
         ),
       ),

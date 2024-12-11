@@ -68,8 +68,7 @@ class CarrinhoTile extends StatelessWidget {
                                 fontSize: 12
                               ),
                             );
-                          }
-                          
+                          }                          
                         }
                       )
                     ],

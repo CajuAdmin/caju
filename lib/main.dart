@@ -2,6 +2,7 @@ import 'package:caju/authservices.dart';
 import 'package:caju/modelos/carrinho_manager.dart';
 import 'package:caju/modelos/home_manager.dart';
 import 'package:caju/modelos/login_controller';
+import 'package:caju/modelos/page_manager.dart';
 import 'package:caju/modelos/product_manager.dart';
 import 'package:caju/modelos/user.dart';
 import 'package:flutter/material.dart';
@@ -22,9 +23,6 @@ void main() async {
       builder: (context) => const MainApp(),
       ), 
   );
-
-  //FirebaseFirestore.instance.collection('teste213').add({'teste' : 'teste'});
-
 }
 
 class MainApp extends StatelessWidget {

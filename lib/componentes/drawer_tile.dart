@@ -27,14 +27,14 @@ class Drawertile extends StatelessWidget {
                 Icon(
                   iconData,
                   size: 32,
-                  color: curPage == pagina ? const Color.fromARGB(255, 54, 134, 44) : Colors.black,
+                  color: curPage == pagina ? Color.fromARGB(255, 78, 35, 40) : Colors.black,
                 ),
             ),
                 Text(
                   title,
                   style: TextStyle(
                     fontSize: 16,
-                    color: curPage == pagina ? const Color.fromARGB(255, 54, 134, 44) : Colors.black,
+                    color: curPage == pagina ? Color.fromARGB(255, 78, 35, 40)  : Colors.black,
                   ),
                 )
           ],

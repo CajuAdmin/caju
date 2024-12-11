@@ -21,6 +21,7 @@ class DrawerCustomHeader extends StatelessWidget {
               Text(
                 'Cafeteria CaJu',
                 style: TextStyle(
+                  color: Colors.white,
                   fontSize: 32,
                   fontWeight: FontWeight.bold
                 ),
@@ -50,7 +51,7 @@ class DrawerCustomHeader extends StatelessWidget {
                     ? 'Sair'
                     : 'Entre ou cadastre-se',
                     style: TextStyle(
-                      color: const Color.fromARGB(255, 54, 134, 44),
+                      color: Theme.of(context).primaryColor ,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),

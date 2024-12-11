@@ -1,4 +1,5 @@
 import 'package:caju/componentes/card_preco.dart';
+import 'package:caju/componentes/drawer_custom.dart';
 import 'package:caju/modelos/carrinho_manager.dart';
 import 'package:caju/telas/carrinho/carrinho_tile.dart';
 import 'package:flutter/foundation.dart';
@@ -19,6 +20,12 @@ class TelaCarrinho extends StatelessWidget {
           ),
         ),
         centerTitle: true,
+        leading: IconButton(
+          onPressed: (){
+            Navigator.pop(context);
+          }, 
+          icon: Icon(Icons.arrow_back),
+        ),
       ),
       body: Consumer<CarrinhoManager>(
         builder: (_, carrinhoManager, __){

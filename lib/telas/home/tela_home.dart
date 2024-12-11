@@ -2,6 +2,7 @@ import 'package:caju/componentes/drawer_custom.dart';
 import 'package:caju/modelos/home_manager.dart';
 import 'package:caju/telas/carrinho/tela_carrinho.dart';
 import 'package:caju/telas/home/secao_list.dart';
+import 'package:caju/telas/home/secao_staggered.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +20,7 @@ class TelaHome extends StatelessWidget {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Color.fromARGB(255, 211, 118, 130),
+                  Color.fromARGB(255, 228, 114, 69),
                   Color.fromARGB(255, 253, 181, 168)
                 ],
                 begin: Alignment.topCenter,
@@ -36,6 +37,9 @@ class TelaHome extends StatelessWidget {
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(
                     'Cafeteria CaJu',
+                    style: TextStyle(
+                      color: Colors.white
+                    ),
                   ),
                   centerTitle: true,
                 ),
@@ -60,18 +64,19 @@ class TelaHome extends StatelessWidget {
                         case 'lista':
                           return SecaoList(secao: secao);
                         case 'staggered':
-                          return Container();
+                          return SecaoStaggered(secao: secao);
                         default:
                           return Container();
                       }
                     }).toList();
+                    children.add(SizedBox(height: 50));
                   return SliverList(
                 delegate: SliverChildListDelegate(
                   children
                 ),
               );
                 }
-              )       
+              ),      
             ],
           ),
         ],

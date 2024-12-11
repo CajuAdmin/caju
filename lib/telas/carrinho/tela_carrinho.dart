@@ -2,6 +2,7 @@ import 'package:caju/componentes/card_preco.dart';
 import 'package:caju/componentes/drawer_custom.dart';
 import 'package:caju/modelos/carrinho_manager.dart';
 import 'package:caju/telas/carrinho/carrinho_tile.dart';
+import 'package:caju/telas/produtos/tela_categorias.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +13,6 @@ class TelaCarrinho extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DrawerCustom(),
       appBar: AppBar(
         title: Text(
           'Carrinho',
@@ -21,6 +21,15 @@ class TelaCarrinho extends StatelessWidget {
           ),
         ),
         centerTitle: true,
+        leading: IconButton(
+          onPressed: (){
+            Navigator.pushReplacement(
+              context,
+            MaterialPageRoute(builder: (context) => TelaCategorias()),
+            );
+          }, 
+          icon: Icon(Icons.arrow_back),
+        ),
       ),
       body: Consumer<CarrinhoManager>(
         builder: (_, carrinhoManager, __){

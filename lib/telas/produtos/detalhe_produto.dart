@@ -6,6 +6,7 @@ import 'package:caju/modelos/produto.dart';
 import 'package:caju/telas/carrinho/tela_carrinho.dart';
 import 'package:caju/telas/login/login.dart';
 import 'package:caju/telas/produtos/componentes/tamanho_widget.dart';
+import 'package:caju/telas/produtos/tela_produtos.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,6 +29,15 @@ class DetalheProduto extends StatelessWidget {
             ),
           ),
           centerTitle: true,
+          leading: IconButton(
+          onPressed: (){
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => TelaProdutos()),
+      );
+          }, 
+          icon: Icon(Icons.arrow_back),
+        ),
         ),
         body: ListView(
           children: [

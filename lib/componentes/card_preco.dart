@@ -59,7 +59,45 @@ class CardPreco extends StatelessWidget {
             ),
             SizedBox(height: 13,),
             ElevatedButton(
-              onPressed: onPressed,
+              onPressed: (){
+                final carrinhoManager = context.read<CarrinhoManager>();
+
+                if (carrinhoManager.items.isEmpty){
+                  showDialog(
+                    context: context, 
+                    builder: (_) => AlertDialog(
+                      title: Text('Carrinho vazio!'),
+                      content: Text('Adicione produtos ao carrinho antes de finalizar sua compra.'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          }, 
+                          child: Text('OK'),
+                        )
+                      ],
+                    )
+                  );
+                } else {
+                  showDialog(
+                    context: context, 
+                    builder: (_) => AlertDialog(
+                      title: Text('Pedido finalizado!'),
+                      content: Text('Obrigado por sua compra, em breve suas gostosuras estarão chegando!'),
+                      actions: [
+                        TextButton(
+                          onPressed: (){
+                            carrinhoManager.limparCarrinho();
+                            Navigator.of(context).pop();
+                          }, 
+                          child: Text('OK'),
+                        )
+                      ],
+                    )
+                  );
+                }
+
+              },
                 style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 203, 117, 47),
                 foregroundColor: Color.fromARGB(255, 204, 167, 141),

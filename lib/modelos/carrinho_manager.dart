@@ -100,4 +100,22 @@ class CarrinhoManager extends ChangeNotifier{
     return true;
   }
 
+  Future<void> limparCarrinho() async {
+  final carrinhoRef = await usuario.carrinhoReference;
+  if (carrinhoRef == null) {
+    return;
+  }
+
+  for (final produtoCarrinho in items) {
+    await carrinhoRef.doc(produtoCarrinho.id).delete(); 
+    produtoCarrinho.removeListener(_onItemUpdated); 
+  }
+
+  items.clear();
+  precoProdutos = 0.0;
+
+  notifyListeners();
+}
+
+
 }

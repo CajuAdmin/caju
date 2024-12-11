@@ -93,10 +93,8 @@ class Authservices extends ChangeNotifier {
       notifyListeners();
       sucesso(context, 'Usuário autenticado com sucesso.');
 
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => Telabase()),
-      );
+      Navigator.of(context).pop();
+      
     }).catchError((e) {
       switch (e.code) {
         case 'invalid-email':

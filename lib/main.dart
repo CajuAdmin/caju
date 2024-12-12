@@ -1,5 +1,3 @@
-// ignore_for_file: unused_import
-
 import 'package:caju/authservices.dart';
 import 'package:caju/modelos/carrinho_manager.dart';
 import 'package:caju/modelos/home_manager.dart';

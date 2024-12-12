@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:caju/componentes/drawer_custom.dart';
 import 'package:caju/modelos/page_manager.dart';
 import 'package:caju/telas/carrinho/tela_carrinho.dart';

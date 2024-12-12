@@ -1,12 +1,16 @@
+// ignore_for_file: unused_import
+
 import 'package:caju/authservices.dart';
 import 'package:caju/modelos/user.dart';
 import 'package:caju/telas/login/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:caju/modelos/user.dart';
+
 
 class DrawerCustomHeader extends StatelessWidget {
+  const DrawerCustomHeader({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(

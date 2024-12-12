@@ -52,7 +52,7 @@ class MainApp extends StatelessWidget {
           update: (_, authServices, carrinhoManager) =>
            carrinhoManager!..updateUsuario(authServices),
         ),
-        Provider<PageManager>(
+        ChangeNotifierProvider<PageManager>(
           create: (_) => PageManager(PageController()),
         )
       ],

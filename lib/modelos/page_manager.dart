@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class PageManager extends ChangeNotifier {
+class PageManager {
   
   PageManager(this._pageController);
 

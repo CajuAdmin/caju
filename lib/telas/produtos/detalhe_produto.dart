@@ -1,4 +1,4 @@
-// ignore_for_file: sized_box_for_whitespace
+// ignore_for_file: sized_box_for_whitespace, unused_import
 
 import 'package:caju/authservices.dart';
 import 'package:caju/modelos/carrinho_manager.dart';
@@ -10,11 +10,27 @@ import 'package:caju/telas/produtos/tela_produtos.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:caju/modelos/item_tamanho.dart';
 
 class DetalheProduto extends StatelessWidget {
   const DetalheProduto({required this.produto, super.key});
 
   final Produto produto;
+  num encontrarMenorPreco(List<ItemTamanho> tamanhos) {
+  if (tamanhos.isEmpty) {
+    return 0.0; 
+  }
+
+  num menorPreco = tamanhos[0].preco; 
+
+  for (var tamanho in tamanhos) {
+    if (tamanho.preco < menorPreco) {
+      menorPreco = tamanho.preco;
+    }
+  }
+
+  return menorPreco;
+}
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +86,7 @@ class DetalheProduto extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'R\$',
+                    'R\$ ${encontrarMenorPreco(produto.tamanhos).toStringAsFixed(2)}',
                     style: TextStyle(
                       fontSize: 22.0,
                       fontWeight: FontWeight.bold,
